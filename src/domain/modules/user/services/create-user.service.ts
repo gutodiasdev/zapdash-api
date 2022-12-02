@@ -1,7 +1,5 @@
 import { hash } from 'bcryptjs'
 import { CreateUserRepository } from '@/data/interfaces';
-import { CreateUserError } from '@/domain/errors';
-
 export class CreateUserService {
   constructor(private readonly userRepository: CreateUserRepository) {}
 

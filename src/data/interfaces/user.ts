@@ -10,7 +10,7 @@ export namespace CreateUserRepository {
     email: string,
     password: string,
     image?: string | undefined,
-    role?: Role,
+    role?: Role | undefined,
   }
   export type Output = void | CreateUserError
 }

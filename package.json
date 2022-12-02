@@ -25,6 +25,7 @@
     "@prisma/client": "^4.7.0",
     "bcryptjs": "^2.4.3",
     "dotenv": "^16.0.3",
+    "express-async-errors": "^3.1.1",
     "module-alias": "^2.2.2",
     "rimraf": "^3.0.2"
   }
