@@ -12,7 +12,7 @@ model User {
   image    String?
   email    String  @unique
   password String
-  role     Role    @default(EMPLOYEE)
+  role     Role?   @default(EMPLOYEE)
 }
 
 enum Role {
