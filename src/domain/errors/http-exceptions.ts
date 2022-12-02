@@ -1,5 +1,5 @@
 export class HttpExceptions extends Error {
-  public status: number
+  public readonly status: number
   public message: string
   constructor(status: number, message: string) {
     super(message)
