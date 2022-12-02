@@ -1,4 +1,4 @@
-import { CreateUserError, FindUserByIdError, HttpExceptions } from '@/domain/errors'
+import { CreateUserError, FindUserByEmailError, HttpExceptions } from '@/domain/errors'
 import { User } from '@prisma/client'
 
 export interface CreateUserRepository {
@@ -16,14 +16,14 @@ export namespace CreateUserRepository {
   export type Output = void | CreateUserError
 }
 
-export interface FindUserByIdRepository {
-  find(input: FindUserByIdRepository.Input): Promise<FindUserByIdRepository.Output>
+export interface FindUserByEmailRepository {
+  findEmail(input: FindUserByEmailRepository.Input): Promise<FindUserByEmailRepository.Output>
 }
 
-export namespace FindUserByIdRepository {
+export namespace FindUserByEmailRepository {
   export type Input = {
-    id: string
+    email: string
   }
 
-  export type Output = FindUserByIdError | Partial<User>
+  export type Output = boolean | Partial<User>
 }
