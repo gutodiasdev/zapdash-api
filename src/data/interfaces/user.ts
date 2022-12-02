@@ -13,7 +13,11 @@ export namespace CreateUserRepository {
     image?: string | undefined,
     role?: Role | undefined,
   }
-  export type Output = void | CreateUserError
+  export type Output = {
+    id: string,
+    role: string,
+    refreshToken: string,
+  }
 }
 
 export interface FindUserByEmailRepository {
