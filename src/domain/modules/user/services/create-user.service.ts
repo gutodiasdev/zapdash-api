@@ -8,10 +8,6 @@ export class CreateUserService {
   async execute(input: CreateUserRepository.Input): Promise<CreateUserRepository.Output> {
     const { password: unhashedPassword } = input
     const passwordHash = await hash(unhashedPassword, 10)
-    try {
-      await this.userRepository.create({ ...input, password: passwordHash })
-    } catch {
-      throw new CreateUserError()
-    }
+    await this.userRepository.create({ ...input, password: passwordHash })
   }
 }
