@@ -1,4 +1,4 @@
-import { User } from '@prisma/client'
+import { RefeshToken, User } from '@prisma/client'
 
 export interface CreateUserRepository {
   create(input: CreateUserRepository.Input): Promise<CreateUserRepository.Output>
@@ -34,4 +34,16 @@ export namespace FindUserByEmailRepository {
     password: string,
     role: string,
   }
+}
+
+export interface FindRefreshTokenRespository {
+  find(input: FindRefreshTokenRepository.Input): Promise<FindRefreshTokenRepository.Output>
+}
+
+export namespace FindRefreshTokenRepository {
+  export type Input = {
+    refreshToken: string
+  }
+
+  export type Output = RefeshToken
 }
