@@ -7,4 +7,4 @@ export class CreateUserController {
     const user = await this.createUserService.execute(request.body)
     return response.status(201).json(user)
   }
-}
+} 
