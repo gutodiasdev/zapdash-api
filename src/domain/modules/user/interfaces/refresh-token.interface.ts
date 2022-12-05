@@ -7,5 +7,7 @@ export namespace RefreshToken {
     refreshToken: string
   }
 
-  export type Output = string
+  export type Output = {
+    refreshToken: string
+  }
 }

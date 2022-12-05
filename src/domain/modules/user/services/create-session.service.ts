@@ -2,7 +2,7 @@ import { CreateSession } from '@/domain/modules/user/interfaces';
 import { FindUserByEmailRepository } from '@/domain/modules/user/data/interfaces';
 import { CreateSessionError } from '@/domain/errors';
 import { compare } from 'bcryptjs';
-import { GenerateToken } from '@/main/helpers/generate-token.helper';
+import { GenerateToken } from '@/main/helpers/token-generator.helper';
 
 export class CreateSessionService implements CreateSession {
   constructor(private readonly userRepository: FindUserByEmailRepository) {}

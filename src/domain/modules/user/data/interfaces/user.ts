@@ -37,7 +37,7 @@ export namespace FindUserByEmailRepository {
 }
 
 export interface FindRefreshTokenRespository {
-  find(input: FindRefreshTokenRepository.Input): Promise<FindRefreshTokenRepository.Output>
+  findRefreshToken(input: FindRefreshTokenRepository.Input): Promise<FindRefreshTokenRepository.Output>
 }
 
 export namespace FindRefreshTokenRepository {
@@ -46,4 +46,18 @@ export namespace FindRefreshTokenRepository {
   }
 
   export type Output = RefeshToken
+}
+
+export interface UpdateRefreshTokenRepository {
+  updateRefreshToken(input: UpdateRefreshTokenRepository.Input): Promise<UpdateRefreshTokenRepository.Output>
+}
+
+export namespace UpdateRefreshTokenRepository {
+  export type Input = {
+    userId: string,
+    refreshToken: string,
+    expiresIn: Date
+  }
+
+  export type Output = void
 }

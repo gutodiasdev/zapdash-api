@@ -1,10 +1,43 @@
-import { CreateUserRepository, FindUserByEmailRepository } from '@/domain/modules/user/data/interfaces';
-import { CreateUserError, FindUserByEmailError } from '@/domain/errors';
+import {
+  CreateUserRepository,
+  FindRefreshTokenRepository,
+  FindRefreshTokenRespository,
+  FindUserByEmailRepository,
+  UpdateRefreshTokenRepository
+} from '@/domain/modules/user/data/interfaces';
+import { CreateUserError, FindUserByEmailError, RefreshTokenNotFoundError } from '@/domain/errors';
 import { prisma } from '@/main/config/prisma';
 import { DateProvider } from '@/main/helpers';
 import { v4 } from 'uuid';
+import { RefeshToken } from '@prisma/client';
 
-export class UserRepository implements CreateUserRepository, FindUserByEmailRepository {
+export class UserRepository implements
+  CreateUserRepository,
+  FindUserByEmailRepository,
+  UpdateRefreshTokenRepository,
+  FindRefreshTokenRespository,
+  UpdateRefreshTokenRepository {
+  async findRefreshToken(input: FindRefreshTokenRepository.Input): Promise<FindRefreshTokenRepository.Output> {
+    const refreshToken = await prisma.refeshToken.findFirst({
+      where: {
+        token: input.refreshToken
+      }
+    })
+    if (!refreshToken) throw new RefreshTokenNotFoundError()
+    return refreshToken
+  }
+
+  async updateRefreshToken(input: UpdateRefreshTokenRepository.Input): Promise<UpdateRefreshTokenRepository.Output> {
+    await prisma.refeshToken.update({
+      where: {
+        userId: input.userId,
+      }, data: {
+        token: input.refreshToken,
+        expiresIn: input.expiresIn,
+      }
+    })
+  }
+
   async create(input: CreateUserRepository.Input): Promise<CreateUserRepository.Output> {
     try {
       const token = v4()
