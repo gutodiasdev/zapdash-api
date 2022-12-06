@@ -61,3 +61,15 @@ export namespace UpdateRefreshTokenRepository {
 
   export type Output = void
 }
+
+export interface CheckIfRegisteredRepository {
+  checkIfRegistered(input: CheckIfRegisteredRepository.Input): Promise<CheckIfRegisteredRepository.Output>
+}
+
+export namespace CheckIfRegisteredRepository {
+  export type Input = {
+    email: string
+  }
+
+  export type Output = User | null
+}

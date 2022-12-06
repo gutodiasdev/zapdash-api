@@ -1,17 +1,17 @@
 import { hash } from 'bcryptjs'
-import { CreateUserRepository, FindUserByEmailRepository } from '@/data/interfaces';
+import { CheckIfRegisteredRepository, CreateUserRepository } from '@/data/interfaces';
 import { UserAlreadyExistsError } from '@/domain/errors';
 import { CreateUser } from '@/domain/modules/user/interfaces';
 import { sign } from 'jsonwebtoken';
 import { JWT_SECRET } from '@/main/config';
 
 export class CreateUserService implements CreateUser {
-  constructor(private readonly userRepository: CreateUserRepository & FindUserByEmailRepository) {}
+  constructor(private readonly userRepository: CreateUserRepository & CheckIfRegisteredRepository) {}
 
   async execute(input: CreateUser.Input): Promise<CreateUser.Output> {
     const { password: unhashedPassword } = input
 
-    const userAlreadyExists = await this.userRepository.findEmail({ email: input.email })
+    const userAlreadyExists = await this.userRepository.checkIfRegistered({ email: input.email })
 
     if (userAlreadyExists) throw new UserAlreadyExistsError()
 

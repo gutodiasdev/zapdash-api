@@ -1,22 +1,33 @@
 import {
+  CheckIfRegisteredRepository,
   CreateUserRepository,
   FindRefreshTokenRepository,
   FindRefreshTokenRespository,
   FindUserByEmailRepository,
   UpdateRefreshTokenRepository
 } from '@/data/interfaces';
-import { CreateUserError, FindUserByEmailError, RefreshTokenNotFoundError } from '@/domain/errors';
+import {
+  CreateUserError,
+  FindUserByEmailError,
+  RefreshTokenNotFoundError
+} from '@/domain/errors';
 import { prisma } from '@/main/config/prisma';
 import { DateProvider } from '@/main/helpers';
+import { User } from '@prisma/client';
 import { v4 } from 'uuid';
-import { RefeshToken } from '@prisma/client';
 
 export class UserRepository implements
   CreateUserRepository,
   FindUserByEmailRepository,
   UpdateRefreshTokenRepository,
   FindRefreshTokenRespository,
-  UpdateRefreshTokenRepository {
+  UpdateRefreshTokenRepository,
+  CheckIfRegisteredRepository {
+
+  async checkIfRegistered(input: CheckIfRegisteredRepository.Input): Promise<CheckIfRegisteredRepository.Output> {
+    const user = await prisma.user.findFirst({ where: { email: input.email } })
+    return user
+  }
   async findRefreshToken(input: FindRefreshTokenRepository.Input): Promise<FindRefreshTokenRepository.Output> {
     const refreshToken = await prisma.refeshToken.findFirst({
       where: {

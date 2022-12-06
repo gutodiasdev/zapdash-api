@@ -1,6 +1,5 @@
 import { CreatePatientRepository, FindPatientRepository } from '@/data/interfaces';
 import { CreatePatient } from '@/domain/modules/patient/interfaces';
-import { Patient, Prisma } from '@prisma/client';
 
 export class CreatePatientService implements CreatePatient {
   constructor(private readonly patientRepository: FindPatientRepository & CreatePatientRepository) {}
