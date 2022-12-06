@@ -1,5 +1,5 @@
 import { hash } from 'bcryptjs'
-import { CreateUserRepository, FindUserByEmailRepository } from '@/domain/modules/user/data/interfaces';
+import { CreateUserRepository, FindUserByEmailRepository } from '@/data/interfaces';
 import { UserAlreadyExistsError } from '@/domain/errors';
 import { CreateUser } from '@/domain/modules/user/interfaces';
 import { sign } from 'jsonwebtoken';

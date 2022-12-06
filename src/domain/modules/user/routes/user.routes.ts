@@ -1,10 +1,10 @@
 import { Router } from 'express'
-import { CreateUserController } from '@/domain/modules/user/data/controllers'
-import { UserRepository } from '@/domain/modules/user/data/repositories'
+import { CreateUserController } from '@/data/controllers'
+import { UserRepository } from '@/data/repositories'
 import { CreateUserService } from '@/domain/modules/user/services'
 import { CreateSessionService } from '../services/create-session.service'
-import { CreateSessionController } from '../data/controllers/create-session.controller'
-import { updateRefreshTokenController } from '../data/controllers/update-refresh-token.controller'
+import { CreateSessionController } from '../../../../data/controllers/create-session.controller'
+import { updateRefreshTokenController } from '../../../../data/controllers/update-refresh-token.controller'
 
 const userRouter = Router()
 const userRepository = new UserRepository()

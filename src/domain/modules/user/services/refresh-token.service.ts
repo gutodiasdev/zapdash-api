@@ -1,5 +1,5 @@
 import { RefreshToken } from '@/domain/modules/user/interfaces'
-import { FindRefreshTokenRespository, UpdateRefreshTokenRepository } from '@/domain/modules/user/data/interfaces';
+import { FindRefreshTokenRespository, UpdateRefreshTokenRepository } from '@/data/interfaces';
 import { DateProvider, TokenGenerator } from '@/main/helpers';
 
 const dateProvider = new DateProvider()

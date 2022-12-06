@@ -1,5 +1,5 @@
 import { CreateSession } from '@/domain/modules/user/interfaces';
-import { FindUserByEmailRepository } from '@/domain/modules/user/data/interfaces';
+import { FindUserByEmailRepository } from '@/data/interfaces';
 import { CreateSessionError } from '@/domain/errors';
 import { compare } from 'bcryptjs';
 import { TokenGenerator } from '@/main/helpers';

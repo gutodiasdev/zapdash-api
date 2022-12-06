@@ -4,7 +4,7 @@ import {
   FindRefreshTokenRespository,
   FindUserByEmailRepository,
   UpdateRefreshTokenRepository
-} from '@/domain/modules/user/data/interfaces';
+} from '@/data/interfaces';
 import { CreateUserError, FindUserByEmailError, RefreshTokenNotFoundError } from '@/domain/errors';
 import { prisma } from '@/main/config/prisma';
 import { DateProvider } from '@/main/helpers';

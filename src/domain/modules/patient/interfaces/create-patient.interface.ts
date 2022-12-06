@@ -1,3 +1,5 @@
+import { Patient } from '@prisma/client'
+
 export interface CreatePatient {
   execute(input: CreatePatient.Input): Promise<CreatePatient.Output>
 }
@@ -11,9 +13,5 @@ export namespace CreatePatient {
     age: number
     birthdate: string
   }
-  export type Output = {
-    id: string
-    fullname: string
-    document: string
-  }
+  export type Output = Patient
 }

@@ -1,6 +1,6 @@
 import { RefreshToken } from '@/domain/modules/user/interfaces';
 import { Request, Response } from 'express';
-import { RefreshTokenService } from '../../services/refresh-token.service';
+import { RefreshTokenService } from '../../domain/modules/user/services/refresh-token.service';
 import { UserRepository } from '../repositories';
 
 export class UpdateRefreshTokenController {
