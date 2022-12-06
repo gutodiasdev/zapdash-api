@@ -9,7 +9,7 @@ export namespace FindPatientRepository {
     fullname?: string
     document?: string
   }
-  export type Output = Patient
+  export type Output = Patient | null
 }
 
 export interface CreatePatientRepository {

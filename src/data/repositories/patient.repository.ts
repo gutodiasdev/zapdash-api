@@ -8,7 +8,7 @@ export class PatientRepository implements CreatePatientRepository, FindPatientRe
     return patient
   }
 
-  async findPatient(input: FindPatientRepository.Input): Promise<Patient> {
+  async findPatient(input: FindPatientRepository.Input): Promise<Patient | null> {
     const patient = await prisma.patient.findFirst({
       where: {
         OR: [
@@ -24,7 +24,7 @@ export class PatientRepository implements CreatePatientRepository, FindPatientRe
         ]
       }
     })
-    if (!patient) throw new Error("replace this");
+    if (!patient) return null;
     return patient
   }
 }

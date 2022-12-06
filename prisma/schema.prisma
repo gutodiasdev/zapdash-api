@@ -39,7 +39,7 @@ model Patient {
   fullname  String
   document  String
   phone     String?
-  wheigth   String?
+  weigth    String?
   age       Int
   birthdate String
   createdAt DateTime @default(now())

@@ -9,7 +9,7 @@ export namespace CreatePatient {
     fullname: string
     document: string
     phone?: string
-    wheigth?: string
+    weigth?: string
     age: number
     birthdate: string
   }
