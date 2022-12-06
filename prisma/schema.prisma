@@ -35,8 +35,13 @@ enum Role {
 }
 
 model Patient {
-  id        String @id @default(uuid())
+  id        String   @id @default(uuid())
   fullname  String
+  document  String
+  phone     String?
+  wheigth   String?
   age       Int
   birthdate String
+  createdAt DateTime @default(now())
+  updateAt  DateTime @updatedAt
 }
